@@ -1,6 +1,6 @@
 import random
 
-def montyHallExperiment(s, chosen, change):
+def monty_hall_experiment(s, chosen, change):
 	doors = []
 	for door in range(s):
 		doors.append('EMPTY')
@@ -17,7 +17,7 @@ def montyHallExperiment(s, chosen, change):
 	if change: return doors[1] #User changed the selection
 	else: return doors[0] #User didn't change the selection
 
-def checkGreaterThan0 ():
+def check_greater_than_0 ():
 	n = -1
 	while n < 1:
 		try:
@@ -28,7 +28,7 @@ def checkGreaterThan0 ():
 			print('Type a number greater than 0')
 	return n
 
-def checkYesNo():
+def check_yes_no():
 	b = -1
 	while b != True and b != False:
 		b = input('').lower()
@@ -47,7 +47,7 @@ while True:
 	repeat_size = -1 #Repeat the experiment with same size
 
 	print('\nHow many doors do you want?\nIt is recomended a maximum of 1000 doors for fast performance')
-	size = checkGreaterThan0()
+	size = check_greater_than_0()
 	while repeat_size:
 		goats = 0 #Number of found goats
 		tries = -1 #Number of tries for specific choices
@@ -65,14 +65,14 @@ while True:
 			except ValueError:
 				print(f'Type a number between 0 and {size}')
 		print('Do you want to change your door? (y/n)')
-		change_door = checkYesNo()
+		change_door = check_yes_no()
 		if change_door: decision = 'changed'
 		else: decision = 'didn\'t change'
 		print('How many times do you want to repeat the experiment for this choices?\nIt is recomended a maximum of 100000 repetitions for fast performance')
-		tries = checkGreaterThan0()
+		tries = check_greater_than_0()
 
 		for i in range(tries):
-			if montyHallExperiment(size, chosen_door, change_door) == 'GOAT':
+			if monty_hall_experiment(size, chosen_door, change_door) == 'GOAT':
 				goats += 1
 		total_goats += goats
 		total_tries += tries
@@ -88,4 +88,4 @@ while True:
 		print(f'Your experiment has {size} doors')
 
 		print('\nDo you want to repeat experiment for the same doors amount? (y/n)\nRemember, if you keep the door amount goats will be add to existing and you could change the other decisions')
-		repeat_size = checkYesNo()
+		repeat_size = check_yes_no()
